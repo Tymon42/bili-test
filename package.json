@@ -17,6 +17,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "bilibili-live-ws": "^6.2.1",
     "einf": "^1.3.0",
     "vue": "^3.2.38"
   },

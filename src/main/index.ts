@@ -1,7 +1,19 @@
+/* eslint-disable no-console */
 import { app } from 'electron'
 import { createEinf } from 'einf'
+import { KeepLiveTCP } from 'bilibili-live-ws'
 import { AppController } from './app.controller'
 import { createWindow } from './main.window'
+
+const live = new KeepLiveTCP(92613)
+
+live.on('open', () => console.log('Connection is established'))
+// Connection is established
+live.on('live', () => {
+  live.on('heartbeat', console.log)
+  // 74185
+})
+live.on('msg', data => console.log(data))
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = 'true'
 
